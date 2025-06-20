@@ -3,8 +3,8 @@ import locationImage from "../../../assets/location-merchant.png"
 
 const Merchant = () => {
   return (
-    <section className="bg-accent-content mb-8 rounded-4xl">
-      <div className="container flex flex-col justify-center p-8 lg:p-20 mx-auto lg:flex-row lg:justify-between">
+    <section data-aos="flip-left" className="bg-accent-content mb-8 rounded-4xl">
+      <div  className="container flex flex-col justify-center p-8 lg:p-20 mx-auto lg:flex-row lg:justify-between">
         <div className="flex flex-col text-center  lg:text-left space-y-4 text-base-100">
           <h1 className="text-2xl font-bold leading-none sm:text-4xl">
             Merchant and Customer Satisfaction <br /> is Our First Priority

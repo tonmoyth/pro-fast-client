@@ -26,11 +26,11 @@ const Works = () => {
       description: "Sit back and relax while we deliver top-quality service.",
     },
   ];
-  return <section className="py-10 w-11/12 mx-auto">
+  return <section data-aos="fade-right" className="py-10 w-11/12 mx-auto">
       <h2 className="text-4xl font-bold mb-6 text-primary">How It Works</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto ">
         {howItWorksData.map((item, index) => (
-          <div key={index} className="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition duration-300">
+          <div data-aos="fade-up" key={index} className="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition duration-300">
             <div className="mb-4 flex">{item.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
             <p className="text-gray-600">{item.description}</p>

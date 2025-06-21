@@ -1,11 +1,41 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../proFastLogo/Logo";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const NavBer = () => {
-    const navLinks = <>
-     <li><NavLink to='/'>Home</NavLink></li>
+  const { user, logoutUser } = useAuth();
+  const navLinks = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/coverage">Coverage</NavLink>
+      </li>
     </>
+  );
+
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Logout successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message}`,
+        });
+      });
+  };
   return (
     <div className="navbar bg-base-100 mb-6 rounded-lg p-2">
       <div className="navbar-start">
@@ -31,20 +61,26 @@ const NavBer = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-           {navLinks}
+            {navLinks}
           </ul>
         </div>
-        <Link to='/'>
-            <Logo></Logo>
+        <Link to="/">
+          <Logo></Logo>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <button onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
